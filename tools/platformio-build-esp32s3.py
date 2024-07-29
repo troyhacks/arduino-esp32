@@ -66,6 +66,7 @@ env.Append(
         "-Wno-stringop-truncation",
         "-Wno-stringop-overflow",
         "-Wno-maybe-uninitialized",
+        "-ffast-math",
         "-Wwrite-strings",
         "-fstack-protector",
         "-fstrict-volatile-bitfields",
