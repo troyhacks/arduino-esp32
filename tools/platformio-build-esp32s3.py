@@ -53,7 +53,7 @@ env.Append(
     ],
 
     CCFLAGS=[
-        "-O2",
+        "-Ofast",
         "-mlongcalls",
         "-ffunction-sections",
         "-fdata-sections",
@@ -65,6 +65,7 @@ env.Append(
         "-ggdb",
         "-Wno-stringop-truncation",
         "-Wno-stringop-overflow",
+        "-Wno-maybe-uninitialized",
         "-Wwrite-strings",
         "-fstack-protector",
         "-fstrict-volatile-bitfields",
