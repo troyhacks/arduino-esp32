@@ -53,7 +53,7 @@ env.Append(
     ],
 
     CCFLAGS=[
-        "-Ofast",
+        "-O3",
         "-mlongcalls",
         "-ffunction-sections",
         "-fdata-sections",
