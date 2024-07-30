@@ -1,6 +1,6 @@
 # TroyHacks customized arduino-esp32
 
-Use at own risk, crazy personal experiments mostly customized for ONLY the ESP32-S3
+Use at own risk, crazy personal experiments customized for ONLY the ESP32-S3
 
 (likely will NOT work with other ESP32 variants)
 
