@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2015-2024 Espressif Systems (Shanghai) CO LTD
+ * SPDX-FileCopyrightText: 2015-2021 Espressif Systems (Shanghai) CO LTD
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -47,20 +47,16 @@ typedef struct {
     wifi_country_policy_t policy;  /**< country policy */
 } wifi_country_t;
 
-/* Strength of authmodes */
-/* OPEN < WEP < WPA_PSK < WPA2_PSK = WPA_WPA2_PSK < WAPI_PSK < WPA3_PSK = WPA2_WPA3_PSK */
 typedef enum {
     WIFI_AUTH_OPEN = 0,         /**< authenticate mode : open */
     WIFI_AUTH_WEP,              /**< authenticate mode : WEP */
     WIFI_AUTH_WPA_PSK,          /**< authenticate mode : WPA_PSK */
     WIFI_AUTH_WPA2_PSK,         /**< authenticate mode : WPA2_PSK */
     WIFI_AUTH_WPA_WPA2_PSK,     /**< authenticate mode : WPA_WPA2_PSK */
-    WIFI_AUTH_ENTERPRISE,       /**< authenticate mode : WiFi EAP security */
-    WIFI_AUTH_WPA2_ENTERPRISE = WIFI_AUTH_ENTERPRISE,  /**< authenticate mode : WiFi EAP security */
+    WIFI_AUTH_WPA2_ENTERPRISE,  /**< authenticate mode : WPA2_ENTERPRISE */
     WIFI_AUTH_WPA3_PSK,         /**< authenticate mode : WPA3_PSK */
     WIFI_AUTH_WPA2_WPA3_PSK,    /**< authenticate mode : WPA2_WPA3_PSK */
     WIFI_AUTH_WAPI_PSK,         /**< authenticate mode : WAPI_PSK */
-    WIFI_AUTH_WPA3_ENT_192,     /**< authenticate mode : WPA3_ENT_SUITE_B_192_BIT */
     WIFI_AUTH_MAX
 } wifi_auth_mode_t;
 
@@ -193,7 +189,7 @@ typedef struct {
     uint8_t ssid[33];                     /**< SSID of AP */
     uint8_t primary;                      /**< channel of AP */
     wifi_second_chan_t second;            /**< secondary channel of AP */
-    int8_t  rssi;                         /**< signal strength of AP. Note that in some rare cases where signal strength is very strong, rssi values can be slightly positive */
+    int8_t  rssi;                         /**< signal strength of AP */
     wifi_auth_mode_t authmode;            /**< authmode of AP */
     wifi_cipher_type_t pairwise_cipher;   /**< pairwise cipher of AP */
     wifi_cipher_type_t group_cipher;      /**< group cipher of AP */
@@ -271,24 +267,23 @@ typedef struct {
 
 /** @brief STA configuration settings for the ESP32 */
 typedef struct {
-    uint8_t ssid[32];                         /**< SSID of target AP. */
-    uint8_t password[64];                     /**< Password of target AP. */
-    wifi_scan_method_t scan_method;           /**< do all channel scan or fast scan */
-    bool bssid_set;                           /**< whether set MAC address of target AP or not. Generally, station_config.bssid_set needs to be 0; and it needs to be 1 only when users need to check the MAC address of the AP.*/
-    uint8_t bssid[6];                         /**< MAC address of target AP*/
-    uint8_t channel;                          /**< channel of target AP. Set to 1~13 to scan starting from the specified channel before connecting to AP. If the channel of AP is unknown, set it to 0.*/
-    uint16_t listen_interval;                 /**< Listen interval for ESP32 station to receive beacon when WIFI_PS_MAX_MODEM is set. Units: AP beacon intervals. Defaults to 3 if set to 0. */
-    wifi_sort_method_t sort_method;           /**< sort the connect AP in the list by rssi or security mode */
-    wifi_scan_threshold_t  threshold;         /**< When scan_threshold is set, only APs which have an auth mode that is more secure than the selected auth mode and a signal stronger than the minimum RSSI will be used. */
-    wifi_pmf_config_t pmf_cfg;                /**< Configuration for Protected Management Frame. Will be advertised in RSN Capabilities in RSN IE. */
-    uint32_t rm_enabled:1;                    /**< Whether Radio Measurements are enabled for the connection */
-    uint32_t btm_enabled:1;                   /**< Whether BSS Transition Management is enabled for the connection */
-    uint32_t mbo_enabled:1;                   /**< Whether MBO is enabled for the connection */
-    uint32_t transition_disable:1;            /**< Whether to enable transition disable feature */
-    uint32_t reserved:28;                     /**< Reserved for future feature set */
-    wifi_sae_pwe_method_t sae_pwe_h2e;        /**< Configuration for SAE PWE derivation method */
-    uint8_t failure_retry_cnt;                /**< Number of connection retries station will do before moving to next AP. scan_method should be set as WIFI_ALL_CHANNEL_SCAN to use this config.
-                                                   Note: Enabling this may cause connection time to increase incase best AP doesn't behave properly. */
+    uint8_t ssid[32];      /**< SSID of target AP. */
+    uint8_t password[64];  /**< Password of target AP. */
+    wifi_scan_method_t scan_method;    /**< do all channel scan or fast scan */
+    bool bssid_set;        /**< whether set MAC address of target AP or not. Generally, station_config.bssid_set needs to be 0; and it needs to be 1 only when users need to check the MAC address of the AP.*/
+    uint8_t bssid[6];     /**< MAC address of target AP*/
+    uint8_t channel;       /**< channel of target AP. Set to 1~13 to scan starting from the specified channel before connecting to AP. If the channel of AP is unknown, set it to 0.*/
+    uint16_t listen_interval;   /**< Listen interval for ESP32 station to receive beacon when WIFI_PS_MAX_MODEM is set. Units: AP beacon intervals. Defaults to 3 if set to 0. */
+    wifi_sort_method_t sort_method;    /**< sort the connect AP in the list by rssi or security mode */
+    wifi_scan_threshold_t  threshold;     /**< When sort_method is set, only APs which have an auth mode that is more secure than the selected auth mode and a signal stronger than the minimum RSSI will be used. */
+    wifi_pmf_config_t pmf_cfg;    /**< Configuration for Protected Management Frame. Will be advertized in RSN Capabilities in RSN IE. */
+    uint32_t rm_enabled:1;        /**< Whether Radio Measurements are enabled for the connection */
+    uint32_t btm_enabled:1;       /**< Whether BSS Transition Management is enabled for the connection */
+    uint32_t mbo_enabled:1;       /**< Whether MBO is enabled for the connection */
+    uint32_t transition_disable:1;      /**< Whether to enable transition disable feature */
+    uint32_t reserved:28;         /**< Reserved for future feature set */
+    wifi_sae_pwe_method_t sae_pwe_h2e;     /**< Whether SAE hash to element is enabled */
+    uint8_t failure_retry_cnt;    /**< Number of connection retries station will do before moving to next AP. scan_method should be set as WIFI_ALL_CHANNEL_SCAN to use this config. Note: Enabling this may cause connection time to increase incase best AP doesn't behave properly. */
 } wifi_sta_config_t;
 
 /** @brief Configuration data for ESP32 AP or STA.
@@ -582,9 +577,7 @@ typedef struct {
     uint8_t resp_mac[6];        /**< MAC address of the FTM Responder */
     uint8_t channel;            /**< Primary channel of the FTM Responder */
     uint8_t frm_count;          /**< No. of FTM frames requested in terms of 4 or 8 bursts (allowed values - 0(No pref), 16, 24, 32, 64) */
-    uint16_t burst_period;      /**< Requested period between FTM bursts in 100's of milliseconds (allowed values 0(No pref) - 100) */
-    bool use_get_report_api;    /**< True - Using esp_wifi_ftm_get_report to get FTM report, False - Using ftm_report_data from
-                                     WIFI_EVENT_FTM_REPORT to get FTM report */
+    uint16_t burst_period;      /**< Requested time period between consecutive FTM bursts in 100's of milliseconds (0 - No pref) */
 } wifi_ftm_initiator_cfg_t;
 
 /**
@@ -759,8 +752,6 @@ typedef enum {
     FTM_STATUS_CONF_REJECTED,   /**< Peer rejected FTM configuration in FTM Request */
     FTM_STATUS_NO_RESPONSE,     /**< Peer did not respond to FTM Requests */
     FTM_STATUS_FAIL,            /**< Unknown error during FTM exchange */
-    FTM_STATUS_NO_VALID_MSMT,   /**< FTM session did not result in any valid measurements */
-    FTM_STATUS_USER_TERM,       /**< User triggered termination */
 } wifi_ftm_status_t;
 
 /** Argument structure for */
@@ -781,8 +772,7 @@ typedef struct {
     uint32_t rtt_raw;                           /**< Raw average Round-Trip-Time with peer in Nano-Seconds */
     uint32_t rtt_est;                           /**< Estimated Round-Trip-Time with peer in Nano-Seconds */
     uint32_t dist_est;                          /**< Estimated one-way distance in Centi-Meters */
-    wifi_ftm_report_entry_t *ftm_report_data;   /**< Pointer to FTM Report, should be freed after use. Note: Highly recommended
-                                                     to use API esp_wifi_ftm_get_report to get the report instead of using this */
+    wifi_ftm_report_entry_t *ftm_report_data;   /**< Pointer to FTM Report with multiple entries, should be freed after use */
     uint8_t ftm_report_num_entries;             /**< Number of entries in the FTM Report data */
 } wifi_event_ftm_report_t;
 
