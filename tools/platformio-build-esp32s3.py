@@ -295,14 +295,14 @@ env.Append(
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", "include", "espressif__esp-dsp", "modules", "kalman", "ekf", "include"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", "include", "espressif__esp-dsp", "modules", "kalman", "ekf_imu13states", "include"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", "include", "fb_gfx", "include"),
-        join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", env.BoardConfig().get("build.arduino.memory_type", (env.BoardConfig().get("build.flash_mode", "dio") + "_opi")), "include"),
+        join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", env.BoardConfig().get("build.arduino.memory_type", (env.BoardConfig().get("build.flash_mode", "dio") + "_qspi")), "include"),
         join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
     ],
 
     LIBPATH=[
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", "lib"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", "ld"),
-        join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", env.BoardConfig().get("build.arduino.memory_type", (env.BoardConfig().get("build.flash_mode", "dio") + "_opi")))
+        join(FRAMEWORK_DIR, "tools", "sdk", "esp32s3", env.BoardConfig().get("build.arduino.memory_type", (env.BoardConfig().get("build.flash_mode", "dio") + "_qspi")))
     ],
 
     LIBS=[
