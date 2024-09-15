@@ -1,7 +1,7 @@
 lib-builder: release/v5.3 f7cf4b4
 esp-idf: cc3203dc4f
 arduino: feature/esp32p4 b4418215
-tinyusb: master 91c8700a9
+tinyusb: master 5217cee5d
 chmorgan__esp-libhelix-mp3: 1.0.3
 espressif__cbor: 0.6.0~1
 espressif__esp-dl:

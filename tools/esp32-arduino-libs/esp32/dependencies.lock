@@ -30,7 +30,7 @@ dependencies:
       type: git
     version: af7808ba09448ce82c704455975d4cf1e4305fd7
   espressif/esp-dsp:
-    component_hash: fa7fe74305df6da25867437ebcd4213e047cbfc0556cf92067ab657fce537c6e
+    component_hash: 3e7bbd487f1357a1d4944d0c85966d049501ea281b8a4c7f93f7cfedd5b7f23d
     dependencies:
     - name: idf
       require: private
@@ -38,7 +38,7 @@ dependencies:
     source:
       registry_url: https://components.espressif.com/
       type: service
-    version: 1.5.2
+    version: 1.4.12
   espressif/esp-modbus:
     component_hash: ec567c912fbd8b08648ba72b5562df012482584918fb4af670e57025fc30ea42
     dependencies:
@@ -101,13 +101,13 @@ dependencies:
       type: service
     version: 1.5.0
   espressif/esp32-camera:
-    component_hash: dba2bcc54889ee0211cc3ecd28e29fe7f1e45c0d1d3d2a0bf9927ef0482fc0ec
+    component_hash: a420b3ad79ff92af2a0e417bf64c06ce58db90127f00dffaf2d1016ae686bd6a
     dependencies: []
     source:
       git: https://github.com/espressif/esp32-camera.git
       path: .
       type: git
-    version: 7aa37d4f22503fdac9ccd449e4678c4894c40055
+    version: c8a96e3570812ff03e2cc9e67406189aa30d8a9e
   espressif/esp_diag_data_store:
     component_hash: 8849195251dbb8a2d7268335277cfa310cef36e4ac1e90cd59ad3be4269a30d7
     dependencies:
