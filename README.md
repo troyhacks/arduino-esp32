@@ -2,6 +2,8 @@
 
 ...in theory with ESP-Hosted (v0.0.6) and ESP-Wifi-Remote which should work with the ESP32-P4 EV board.
 
+Libraries are stored separately now, hosted at https://github.com/troyhacks/esp32-arduino-libs/
+
 ## Usage:
 
 ```
