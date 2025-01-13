@@ -1,6 +1,6 @@
 # TroyHacks Experimental P4 build
 
-Mostly this exists to support my porting of WLED to the ESP32-P4, so may not work for every feature as I haven't tested it across all use cases.
+Mostly this exists to support my porting of [WLED to the ESP32-P4](https://github.com/troyhacks/WLED/tree/P4_experimental), so may not work for every feature as I haven't tested it across all use cases.
 
 Works with all ESP32-P4 boards I can get my hands on - the [Espressif ESP32-P4 EV](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html) board, the [Waveshare ESP32-P4 Nano](https://www.waveshare.com/esp32-p4-nano.htm), and the [Olimex ESP32-P4-Devkit](https://www.olimex.com/Products/IoT/ESP32-P4/ESP32-P4-DevKit/open-source-hardware). 
 
