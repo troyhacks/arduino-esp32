@@ -11,7 +11,6 @@ platform                =  https://github.com/troyhacks/platform-espressif32#Ard
 platform_packages       =  framework-arduinoespressif32 @ https://github.com/troyhacks/arduino-esp32#feature/esp32p4
                            framework-arduinoespressif32-libs @ https://github.com/troyhacks/esp32-arduino-libs#main
                            toolchain-riscv32-esp @ https://github.com/espressif/crosstool-NG/releases/download/esp-13.2.0_20240530/riscv32-esp-elf-13.2.0_20240530-x86_64-w64-mingw32.zip
-                           toolchain-xtensa-esp32s3 @ https://github.com/espressif/crosstool-NG/releases/download/esp-13.2.0_20240530/xtensa-esp-elf-13.2.0_20240530-x86_64-w64-mingw32_hotfix.zip
 board_build.arduino.upstream_packages = no
 board                   =  esp32p4
 board_build.mcu         =  esp32p4
