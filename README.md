@@ -2,6 +2,8 @@
 
 Mostly this exists to support my porting of [WLED to the ESP32-P4](https://github.com/troyhacks/WLED/tree/P4_experimental), so may not work for every feature as I haven't tested it across all use cases.
 
+I do include the features for enabling WiFi (and likely Bluetooth) via the ESP32-C6 which is included on several of these boards.
+
 Works with all ESP32-P4 boards I can get my hands on - the [Espressif ESP32-P4 EV](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html) board, the [Waveshare ESP32-P4 Nano](https://www.waveshare.com/esp32-p4-nano.htm), and the [Olimex ESP32-P4-Devkit](https://www.olimex.com/Products/IoT/ESP32-P4/ESP32-P4-DevKit/open-source-hardware). 
 
 **Note:** _Currently generic Serial monitor over USB doesn't work "out of the box" with the Olimex ESP32-P4-Devkit as it has a Serial+JTAG USB port. This library is compiled for that feature - perhaps I just don't know how to use it._ Code uploads and runs just fine tho otherwise.
