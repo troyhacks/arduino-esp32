@@ -1,0 +1,18 @@
+lib-builder: master beff445
+esp-idf: 02c5f2dbb9
+arduino: master c3865018c
+tinyusb: master e36dab392
+chmorgan__esp-libhelix-mp3: 1.0.3
+espressif__eppp_link: 1.0.1
+espressif__esp-dsp: 1.7.0
+espressif__esp-modbus: 1.0.18
+espressif__esp-nn: 1.1.1
+espressif__esp-tflite-micro: 1.3.3~1
+espressif__esp_hosted: 2.3.2
+espressif__esp_modem: 1.4.0
+espressif__esp_serial_slave_link: 1.1.0~1
+espressif__esp_wifi_remote: 0.13.0
+espressif__libsodium: 1.0.20~2
+espressif__mdns: 1.8.2
+espressif__network_provisioning: 1.0.2
+joltwallet__littlefs: 1.20.1
